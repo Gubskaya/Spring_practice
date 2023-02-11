@@ -7,6 +7,9 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--импорт файла со значениями-->
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
     <!--lesson 2-->
     <bean id="testBean"
           class="springTest.lesson2.TestBean">
@@ -20,11 +23,41 @@
 
     <!--lesson 4-->
     <!--Dependency injection-->
-    <!--создаем бин musicPlayer, передаем ему в конструктор бин musicBean -->
+    <!--создаем бин musicPlayer, передаем ему в конструктор ссылочное значение- бин musicBean -->
     <bean id="musicPlayer"
           class="springTest.lesson3.MusicPlayer">
         <constructor-arg ref="musicBean" />
     </bean>
+
+
+    <!--lesson 5-->
+    <!--Dependency injection при помощи сеттера и ссылочного значения-->
+    <!-- тег <property - для сеттера-->
+    <!-- в name передаем название сеттера с маленькой буквы без приставки set-->
+    <bean id="musicPlayer2"
+          class="springTest.lesson3.MusicPlayer">
+        <property name="music" ref="musicBean"/>
+    </bean>
+
+
+    <!--Dependency injection без ссылок на другой бин, с прямым присвоением значений-->
+    <!-- тег <property - для сеттера-->
+    <bean id="musicPlayer3"
+          class="springTest.lesson3.MusicPlayer">
+        <property name="name" value="любое название"/>
+        <property name="volume" value="50"/>
+    </bean>
+
+    <!--присваиваем значения из файла properties-->
+    <!-- ${ключ}-->
+    <bean id="musicPlayer4"
+          class="springTest.lesson3.MusicPlayer">
+        <property name="music" ref="musicBean"/>
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
+    </bean>
+
+
 
 
 
