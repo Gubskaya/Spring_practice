@@ -18,5 +18,16 @@
           class="springTest.lesson3.ClassicalMusic">
     </bean>
 
+    <!--lesson 4-->
+    <!--Dependency injection-->
+    <!--создаем бин musicPlayer, передаем ему в конструктор бин musicBean -->
+    <bean id="musicPlayer"
+          class="springTest.lesson3.MusicPlayer">
+        <constructor-arg ref="musicBean" />
+    </bean>
+
+
+
+
 
 </beans>
