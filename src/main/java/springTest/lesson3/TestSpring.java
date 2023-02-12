@@ -27,6 +27,17 @@ public class TestSpring {
         System.out.println(musicPlayer4.getName());
         System.out.println(musicPlayer4.getVolume());
 
+
+        //инит метод и дестрой метод
+        ClassicalMusic classicalMusic =context.getBean("musicBean2", ClassicalMusic.class);
+        System.out.println(classicalMusic.getSong());
+
+        //c scope prototype destroy-method не вызывается
+        ClassicalMusic classicalMusic1 = context.getBean("musicBean3", ClassicalMusic.class);
+        ClassicalMusic classicalMusic2 = context.getBean("musicBean3", ClassicalMusic.class);
+        System.out.println(classicalMusic1.getSong());
+        System.out.println(classicalMusic2.getSong());
+
         context.close();
     }
 }

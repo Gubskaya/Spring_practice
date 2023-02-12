@@ -59,8 +59,28 @@
 
 
 
+    <!--lesson 8-->
+    <!--указание init-method и destroy-method, которые прописаны в классе ClassicalMusic -->
+    <bean id="musicBean2"
+          class="springTest.lesson3.ClassicalMusic"
+            init-method="doMyInit"
+            destroy-method="doMyDestroy">
+    </bean>
 
+    <!--для бинов scope="prototype" destroy-method не вызывается -->
+    <bean id="musicBean3"
+          class="springTest.lesson3.ClassicalMusic"
+          scope="prototype"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy">
+    </bean>
 
-
-
+    <!--фабричный метод -->
+    <bean id="musicBean4"
+          class="springTest.factoryMethodTest.ClassicalMusic"
+          scope="singleton"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy"
+            factory-method="getClassicalMusic">
+    </bean>
 </beans>
